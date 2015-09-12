@@ -1,0 +1,25 @@
+<style type="text/css">
+    .widget-clock {
+        font-size: 2rem;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+<li class="widget-clock">
+    <span class="time">00:00:00</span>
+</li>
+<script type="text/javascript">
+    window.pydashery.log("Setting up Clock widget");
+
+    window.pydashery.widgetClasses.Clock = function (uuid, $template) {
+        this.uuid = uuid;
+        this.$template = $template;
+    };
+
+    window.pydashery.widgetClasses.Clock.prototype = {
+        setValue: function(value) {
+            this.$template.find('.time').text(value)
+        }
+    };
+</script>

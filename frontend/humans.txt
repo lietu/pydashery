@@ -1,0 +1,12 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Janne Enberg -- http://twitter.com/lietux
+
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, WebSockets,
+    jQuery, Gridster, Modernizr
