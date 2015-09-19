@@ -10,9 +10,9 @@ class ClockWidget(Widget):
         self.set_value(self.get_time())
 
     def get_time(self):
-        if self.settings["24 hours"]:
-            format = "%H:%M:%S"
+        if "format" in self.settings:
+            format = self.settings["format"]
         else:
-            format = "%I:%M:%S %p"
+            format = "%Y-%m-%d\n%H:%M:%S"
 
         return datetime.now().strftime(format)

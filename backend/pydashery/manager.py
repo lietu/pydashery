@@ -28,7 +28,7 @@ def monitor(manager, widget, wait_time):
     while manager.running:
         timer.time_elapsed = 0
         with timer:
-            widget.update()
+            widget.trigger_update()
         sleep(wait_time - timer.time_elapsed)
 
 
@@ -221,7 +221,7 @@ class WebManager(object):
             self.tick()
 
         self.loop = ioloop.IOLoop.instance()
-        self.periodic_callback = ioloop.PeriodicCallback(run, wait_time / 10)
+        self.periodic_callback = ioloop.PeriodicCallback(run, wait_time / 2)
         self.logger.debug("Starting periodic callback")
         self.periodic_callback.start()
         self.logger.debug("Starting IOLoop")

@@ -11,12 +11,8 @@
             this.socket = null;
             this.loadingWidgets = false;
 
-            this.$container = $('.gridster');
-
-            this.gridster = this.$container.gridster({
-                widget_margins: [0, 0],
-                widget_base_dimensions: [300, 200]
-            }).data("gridster");
+            this.$container = $('.widgets');
+            this.$head = $('head');
 
             this.log("PyDashery initialized");
         },
@@ -66,12 +62,13 @@
                 this.log("Setting up template for " + info.type + " widget " + info.uuid);
 
                 var $template = $(info.template);
-                var $item = $template.filter("li");
 
-                $template.remove($item);
+                var $style = $template.filter("style");
+                var $newStyle = $style.clone();
+                $template.remove($style);
 
+                this.$head.append($newStyle);
                 this.$container.append($template);
-                this.gridster.add_widget($item[0]);
 
                 this.log("Initializing widget " + info.uuid);
                 var widget = new this.widgetClasses[info.type](info.uuid, $template);

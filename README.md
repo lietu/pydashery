@@ -31,6 +31,46 @@ running locally with default settings: `http://localhost:8080/`
 `backend/templates/` -directories.
 
 
+# Setting it on on a Raspberry Pi with Raspbian
+
+Configure your Raspberry Pi with the default user, and autostart to graphics
+mode.
+
+## Check out PyDashery
+
+```
+git clone https://github.com/lietu/pydashery.git
+```
+
+## Install requirements etc. tools to help setting up the service
+
+```
+sudo apt-get update
+sudo apt-get install build-essential python-dev python-virtualen virtualenvwrapper supervisor
+```
+
+## Disable screen saving, auto start chromium on boot
+
+```
+echo '@xset s noblank
+@xset s off
+@xset -dpms
+/usr/bin/chromium --kiosk --disable-restore-session-state "http://127.0.0.1:8080"
+' > /home/pi/.config/openbox/autostart
+```
+
+## Set up service to run PyDashery
+
+```
+sudo ln -s /home/pi/pydashery/salt/roots/salt/pydashery/supervisor-pydashery.conf /etc/supervisor/conf.d/
+```
+
+## Reboot the device
+
+```
+sudo reboot
+```
+
 # Ok, so what's the license like?
 
 Short answer: MIT and new BSD.

@@ -2,12 +2,36 @@
 WIDGETS = [
     {
         "type": "Clock",
-        "24 hours": True
+    },
+    {
+        "type": "Clock",
+        "format": "%m/%d/%Y\n%I:%M:%S %p"
+    },
+    {
+        "type": "ImageURL",
+        "url": "http://www.foreca.fi/meteogram.php?loc_id=100658225&lang=fi",
+        "update_minutes": 15
+    },
+    {
+        "type": "Iframe",
+        "url": "http://isitchristmas.com",
+        "update_minutes": 15
+    },
+    {
+        "type": "Iframe",
+        "url": "http://m.fmi.fi/saa/",
+        "update_minutes": 15
+    },
+    {
+        "type": "Iframe",
+        "url": "http://www.metoffice.gov.uk/mobile/forecast/ud9wx0fhw",
+        "update_minutes": 15
     }
+
 ]
 
 # Check for updates this many times per second
-UPDATES_PER_SEC = 5
+UPDATES_PER_SEC = 3
 
 # Which interface and port to listen to
 LISTEN_ADDRESS = "0.0.0.0"

@@ -1,0 +1,32 @@
+<style type="text/css">
+    .widget-iframe iframe {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border: 0;
+    }
+</style>
+<li class="widget-iframe">
+</li>
+<script type="text/javascript">
+    window.pydashery.log("Setting up Iframe widget");
+
+    window.pydashery.widgetClasses.Iframe = function (uuid, $template) {
+        this.uuid = uuid;
+        this.$template = $template;
+    };
+
+    window.pydashery.widgetClasses.Iframe.prototype = {
+        setValue: function(value) {
+            this.$template.empty();
+            var $elem = $('<iframe></iframe>');
+
+            var elem = $elem[0];
+            elem.src = value;
+            elem.scrolling = "no";
+
+            this.$template.filter("li").append(elem);
+            console.log("Pointing iframe " + this.uuid + ": " + value);
+        }
+    };
+</script>
