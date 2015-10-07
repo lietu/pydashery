@@ -18,9 +18,8 @@ WIDGETS = [
         "update_minutes": 15
     },
     {
-        "type": "Iframe",
-        "url": "http://m.fmi.fi/saa/",
-        "update_minutes": 15
+        "type": "TextFile",
+        "filename": "test.txt",
     },
     {
         "type": "Iframe",

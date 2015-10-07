@@ -1,0 +1,31 @@
+<style type="text/css">
+    .widget-textfile {
+        font-size: 5rem;
+        line-height: 7rem;
+        text-align: center;
+    }
+
+    .widget-textfile span {
+        position: relative;
+        white-space: pre-wrap;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+</style>
+<li class="widget-textfile">
+    <span class="content">00:00:00</span>
+</li>
+<script type="text/javascript">
+    window.pydashery.log("Setting up TextFile widget");
+
+    window.pydashery.widgetClasses.TextFile = function (uuid, $template) {
+        this.uuid = uuid;
+        this.$template = $template;
+    };
+
+    window.pydashery.widgetClasses.TextFile.prototype = {
+        setValue: function(value) {
+            this.$template.find('.content').text(value)
+        }
+    };
+</script>
