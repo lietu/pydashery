@@ -22,6 +22,9 @@ configure. Each entry defines the widget to be loaded, the `type` has to match
 the `TYPE` attribute of the `Widget` class, the rest are passed to widgets as
 settings.
 
+1. Set up pre-requisites for the backend, in the `backend/` -directory
+execute: `pip install -r requirements.txt`
+
 1. Run the backend, in the `backend/` -directory execute: `python -m pydashery`
 
 1. Point your favorite (modern) browser to the PyDashery server, e.g. if
