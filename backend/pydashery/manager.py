@@ -110,9 +110,12 @@ class Manager(object):
                     if item == pydashery.widget.Widget:
                         continue
 
-                    if issubclass(item, pydashery.widget.Widget):
-                        self.logger.debug(
-                            "Found widget {}".format(item.TYPE))
+                    try:
+                        if issubclass(item, pydashery.widget.Widget):
+                            self.logger.debug(
+                                "Found widget {}".format(item.TYPE))
+                    except TypeError:
+                        pass
 
 
 def _get_data_handler(webmanager):
