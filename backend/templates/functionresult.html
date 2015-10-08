@@ -1,0 +1,31 @@
+<style type="text/css">
+    .widget-functionresult {
+        font-size: 5rem;
+        line-height: 7rem;
+        text-align: center;
+    }
+
+    .widget-functionresult span {
+        position: relative;
+        white-space: pre-wrap;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+</style>
+<li class="widget-functionresult">
+    <span class="content"></span>
+</li>
+<script type="text/javascript">
+    window.pydashery.log("Setting up FunctionResult widget");
+
+    window.pydashery.widgetClasses.FunctionResult = function (uuid, $template) {
+        this.uuid = uuid;
+        this.$template = $template;
+    };
+
+    window.pydashery.widgetClasses.FunctionResult.prototype = {
+        setValue: function(value) {
+            this.$template.find('.content').text(value)
+        }
+    };
+</script>

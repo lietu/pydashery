@@ -2,10 +2,15 @@
 WIDGETS = [
     {
         "type": "Clock",
+        # Optional, defaults to ISO-8601 -like format
+        "format": "%m/%d/%Y\n%I:%M:%S %p"
     },
     {
-        "type": "Clock",
-        "format": "%m/%d/%Y\n%I:%M:%S %p"
+        "type": "FunctionResult",
+        "update_minutes": 0.0167,
+        # Definition can be either "module.path:class.method" or
+        # "module.path:function_name"
+        "func": "time:time"
     },
     {
         "type": "ImageURL",
