@@ -29,7 +29,9 @@ def monitor(manager, widget, wait_time):
         timer.time_elapsed = 0
         with timer:
             widget.trigger_update()
-        sleep(wait_time - timer.time_elapsed)
+
+        sleep_time = max(wait_time - timer.time_elapsed, 0.0000001)
+        sleep(sleep_time)
 
 
 class Manager(object):
@@ -55,8 +57,8 @@ class Manager(object):
             self.webmanager.start(wait_time)
         finally:
             self.logger.info("Cleaning up...")
-            self.webmanager.stop()
             self.running = False
+            self.webmanager.stop()
 
     def get_updated_widgets(self):
         updated_widgets, self.updated_widgets = self.updated_widgets, []
@@ -258,9 +260,10 @@ class WebManager(object):
         self.handlers.append(handler)
 
     def on_close(self, handler):
-        self.logger.debug("Client from {} disconnected from data stream".format(
-            handler.request.remote_ip
-        ))
+        self.logger.debug(
+            "Client from {} disconnected from data stream".format(
+                handler.request.remote_ip
+            ))
         self.handlers.remove(handler)
 
     def on_get_widgets(self, handler):
